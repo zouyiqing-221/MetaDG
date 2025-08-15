@@ -1,0 +1,156 @@
+PEMS03:
+  num_nodes: 358
+  in_steps: 12
+  out_steps: 12
+
+  time_of_day: True
+  day_of_week: True
+  y_time_of_day: True
+  y_day_of_week: True
+  use_adj_predef: False
+
+  lr: 0.001
+  eps: 0.001
+  weight_decay: 0.0003
+  milestones: [30, 50]
+  clip_grad: 5
+  batch_size: 16
+  max_epochs: 200
+  early_stop: 20
+
+  model_args:
+    in_dim: 3
+    out_dim: 1
+    out_steps: 12
+    node_num: 358
+    hop_num_k: 1
+    node_emb_dim: 16
+    tod_emb_dim: 8
+    dow_emb_dim: 8
+    hidden_dim: 64
+    layer_num: 1
+    use_curriculum_learning: True
+    cl_decay_steps: 6000
+    use_mask: True
+    refine_dynamic_node: True
+    refine_dynamic_graph: True
+    corr_enhance_mode: 'ST'
+    continuous_time_emb_dim: 8
+
+PEMS04:
+  num_nodes: 307
+  in_steps: 12
+  out_steps: 12
+
+  time_of_day: True
+  day_of_week: True
+  y_time_of_day: True
+  y_day_of_week: True
+  use_adj_predef: False
+
+  lr: 0.001
+  eps: 0.001
+  weight_decay: 0.0001
+  milestones: [30, 50]
+  clip_grad: 5
+  batch_size: 16
+  max_epochs: 200
+  early_stop: 20
+  gamma: 0.97
+
+  model_args:
+    in_dim: 3
+    out_dim: 1
+    out_steps: 12
+    node_num: 307
+    hop_num_k: 1
+    node_emb_dim: 16
+    tod_emb_dim: 12
+    dow_emb_dim: 4
+    hidden_dim: 64
+    layer_num: 1
+    use_curriculum_learning: True
+    cl_decay_steps: 6000
+    use_mask: True
+    refine_dynamic_node: True
+    refine_dynamic_graph: True
+    corr_enhance_mode: 'ST'
+    continuous_time_emb_dim: 6
+
+PEMS07:
+  num_nodes: 883
+  in_steps: 12
+  out_steps: 12
+
+  time_of_day: True
+  day_of_week: True
+  y_time_of_day: True
+  y_day_of_week: True
+  use_adj_predef: False
+
+  lr: 0.001
+  eps: 0.001
+  weight_decay: 0.0001
+  milestones: [40, 60]
+  clip_grad: 5
+  batch_size: 4
+  max_epochs: 200
+  early_stop: 20
+
+  model_args:
+    in_dim: 3
+    out_dim: 1
+    out_steps: 12
+    node_num: 883
+    hop_num_k: 1
+    node_emb_dim: 16
+    tod_emb_dim: 8
+    dow_emb_dim: 8
+    hidden_dim: 64
+    layer_num: 1
+    use_curriculum_learning: True
+    cl_decay_steps: 6000
+    use_mask: True
+    refine_dynamic_node: True
+    refine_dynamic_graph: True
+    corr_enhance_mode: 'ST'
+    continuous_time_emb_dim: 8
+
+PEMS08:
+  num_nodes: 170
+  in_steps: 12
+  out_steps: 12
+
+  time_of_day: True
+  day_of_week: True
+  y_time_of_day: True
+  y_day_of_week: True
+  use_adj_predef: False
+
+  lr: 0.001
+  eps: 0.001
+  weight_decay: 0
+  milestones: [40, 60, 80]
+  clip_grad: 5
+  batch_size: 16
+  max_epochs: 200
+  early_stop: 20
+
+  model_args:
+    in_dim: 3
+    out_dim: 1
+    out_steps: 12
+    node_num: 170
+    hop_num_k: 1
+    node_emb_dim: 12
+    tod_emb_dim: 10
+    dow_emb_dim: 2
+    hidden_dim: 64
+    layer_num: 1
+    use_curriculum_learning: True
+    cl_decay_steps: 8000
+    use_mask: True
+    refine_dynamic_node: True
+    refine_dynamic_graph: True
+    corr_enhance_mode: 'ST'
+    continuous_time_emb_dim: 8
