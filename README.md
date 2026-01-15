@@ -1,6 +1,10 @@
-# Meta Dynamic Graph for Traffic Flow Prediction
+# [AAAI'26] Meta Dynamic Graph for Traffic Flow Prediction
 
-### Training Commands
+Yiqing Zou, Hanning Yuan, Qianyu Yang, Ziqiang Yuan, Shuliang Wang, Sijie Ruan\*. 2026. Meta Dynamic Graph for Traffic Flow Prediction. *In Proceedings of the 40th AAAI Conference (AAAI'26).* (* Corresponding Author)
+
+![Meta Dynamic Graph for Traffic Flow Prediction](framework.png "Model Framework")
+
+## Training Commands
 
 ```bash
 cd scripts/
