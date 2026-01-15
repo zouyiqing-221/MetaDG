@@ -103,10 +103,10 @@ class MetaDGCN(nn.Module):
         return h
 
 class DynamicGraphQualification(nn.Module):
-    def __init__(self, node_emb_dim, sigma=2., device=None):
+    def __init__(self, node_emb_dim, delta=2., device=None):
         super(DynamicGraphQualification, self).__init__()
 
-        self.sigma = sigma
+        self.delta = delta
         self.threshold_pool = nn.init.xavier_normal_(nn.Parameter(torch.FloatTensor(node_emb_dim, 1)))
         self.norm_phi = InstanceNorm()
         self.device = device
@@ -127,7 +127,7 @@ class DynamicGraphQualification(nn.Module):
         neg_mask = 1 - pos_mask
 
         pos_mask = torch.sigmoid(x) * pos_mask
-        tau_beta = torch.exp(self.norm_phi(pos_mask) * self.sigma)
+        tau_beta = torch.exp(self.norm_phi(pos_mask) * self.delta)
         phi = tau_beta * pos_mask + tau_beta * neg_mask
 
         return phi
@@ -273,7 +273,7 @@ class MetaDGCRU(nn.Module):
                                                                 cross_attn_hidden_dim=64,
                                                                 corr_enhance_mode=corr_enhance_mode,
                                                                 device=device)
-            self.phi = DynamicGraphQualification(node_emb_dim=node_emb_dim, sigma=2., device=device)
+            self.phi = DynamicGraphQualification(node_emb_dim=node_emb_dim, delta=2., device=device)
             self.stce_g = SpatialTemporalCorrelationEnhancement(node_emb_dim=node_emb_dim,
                                                                 hidden_emb_dim=hidden_dim,
                                                                 cross_attn_hidden_dim=64,
@@ -296,7 +296,7 @@ class MetaDGCRU(nn.Module):
                                                                 corr_enhance_mode=corr_enhance_mode,
                                                                 device=device)
         elif self.refine_dynamic_graph:  # w/o STCE
-            self.phi = DynamicGraphQualification(node_emb_dim=node_emb_dim, sigma=2., device=device)
+            self.phi = DynamicGraphQualification(node_emb_dim=node_emb_dim, delta=2., device=device)
 
         self.use_mask = use_mask
         self.mask_pool = mask_pool
